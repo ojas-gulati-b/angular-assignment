@@ -1,0 +1,46 @@
+<div class="grid-layout">
+  <ng-container *ngIf="loading$ | async; else postsGrid"
+    ><app-loader
+  /></ng-container>
+  <ng-template #postsGrid>
+    <ng-container
+      *ngIf="
+        (error$ | async) === null && (posts$ | async) as posts;
+        else errorTemplate
+      "
+    >
+      <ng-container *ngIf="posts.length > 0; else noDataAvailable">
+        <app-selected-post
+          [selectedId]="activePostId$ | async"
+        ></app-selected-post>
+        <app-posts-grid [posts]="posts"></app-posts-grid>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+  <ng-template #noDataAvailable> Sorry, no data available</ng-template>
+  <ng-template #errorTemplate>Sorry, something went wrong </ng-template>
+</div>
+
+<!-- <ng-container *ngIf="loading$ | async; else postsGrid"></ng-container>
+
+<ng-template #postsGrid>
+  <ng-container *ngIf="(posts$ | async); let posts; else: noDataAvailable">
+    <ng-container *ngIf="posts.length > 0; else noDataAvailable">
+      <app-selected-post></app-selected-post>
+      <app-posts-grid [posts]="posts"></app-posts-grid
+    ></ng-container>
+  </ng-container>
+</ng-template> -->
+
+<!-- <ng-container
+*ngIf="
+  (loading$ | async) === false && (posts$ | async) as posts;
+  else loadingTemplate
+"
+>
+<ng-container *ngIf="posts.length > 0; else noDataAvailable">
+  <app-selected-post></app-selected-post>
+  <app-posts-grid [posts]="posts"></app-posts-grid
+></ng-container>
+</ng-container>
+<ng-template #loadingTemplate><app-loader /></ng-template> -->

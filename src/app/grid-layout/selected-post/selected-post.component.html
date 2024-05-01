@@ -1,0 +1,7 @@
+<div class="selected-post-wrapper">
+  <ng-container *ngIf="selectedId !== null; else noIdSelectedTemplate"
+    >Selected Post Id:
+    <span class="selected-id">{{ selectedId }}</span></ng-container
+  >
+  <ng-template #noIdSelectedTemplate>No Post selected yet</ng-template>
+</div>

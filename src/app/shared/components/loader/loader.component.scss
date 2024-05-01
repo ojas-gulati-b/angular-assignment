@@ -1,0 +1,44 @@
+@import "../../styles/variables.scss";
+
+.loader-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: $color-seasalt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0.8;
+
+  .loader {
+    width: 84px;
+    height: 84px;
+    border: 4px solid $color-seasalt;
+    border-bottom-color: $color-blue;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1.5s linear infinite;
+  }
+  .loader-subtext {
+    color: $color-black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 100px);
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

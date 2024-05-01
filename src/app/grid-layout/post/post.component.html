@@ -1,0 +1,10 @@
+<div
+  [ngClass]="{ post: true, active: (selectedPostId$ | async) === post.id }"
+  *ngIf="post"
+  (click)="onClickPost()"
+>
+  <h2 class="post-header">{{ currentKey }}</h2>
+  <div class="post-content" [title]="post[currentKey]">
+    {{ post[currentKey] }}
+  </div>
+</div>
